@@ -1,6 +1,6 @@
 name: Semantic Release
 
-on: [manual]
+on: [workflow_dispatch]
 
 jobs:
   release:
@@ -14,19 +14,19 @@ jobs:
         uses: cycjimmy/semantic-release-action@v2
         id: semantic
         with:
-          branches: |    
+          branches: |
             [
               '+([0-9])?(.{+([0-9]),x}).x',
-              'master', 
+              'master',
               'main',
-              'next', 
-              'next-major', 
+              'next',
+              'next-major',
               {
-                name: 'beta', 
+                name: 'beta',
                 prerelease: true
-              }, 
+              },
               {
-                name: 'alpha', 
+                name: 'alpha',
                 prerelease: true
               }
             ]
