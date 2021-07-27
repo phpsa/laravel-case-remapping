@@ -1,6 +1,6 @@
 name: Semantic Release
 
-on: [push]
+on: [manual]
 
 jobs:
   release:
@@ -39,4 +39,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SEMANTIC_RELEASE_PACKAGE: :package_name
+          SEMANTIC_RELEASE_PACKAGE: laravel-case-remapping

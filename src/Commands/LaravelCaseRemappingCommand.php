@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Phpsa\LaravelCaseRemapping\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelCaseRemappingCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-case-remapping';
 
     public $description = 'My command';
 

@@ -1,17 +1,17 @@
 {
-    "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "name": "phpsa/laravel-case-remapping",
+    "description": "Methods to allow the mapping of cases to snake / camel for input / output",
     "keywords": [
-        ":vendor_name",
+        "phpsa",
         "laravel",
-        "package_slug"
+        "laravel-case-remapping"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/phpsa/laravel-case-remapping",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Craig Smith",
+            "email": "vxdhost@gmail.com",
             "role": "Developer"
         }
     ],
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Phpsa\\LaravelCaseRemapping\\": "src",
+            "Phpsa\\LaravelCaseRemapping\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Phpsa\\LaravelCaseRemapping\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,10 +50,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Phpsa\\LaravelCaseRemapping\\LaravelCaseRemappingServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "LaravelCaseRemapping": "Phpsa\\LaravelCaseRemapping\\LaravelCaseRemappingFacade"
             }
         }
     },
