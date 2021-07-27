@@ -3,16 +3,14 @@
 namespace Phpsa\LaravelCaseRemapping;
 
 use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
 
 /** @mixin \Illuminate\Support\Collection */
 class CollectionMacros
 {
-
     public function snakeKeys()
     {
         return function ($tidy = true) {
-           // @var \Illuminate\Support\Collection $this
+            // @var \Illuminate\Support\Collection $this
             $result = [];
 
             foreach ($this->items as $key => $value) {
@@ -31,7 +29,7 @@ class CollectionMacros
     public function camelKeys()
     {
         return function () {
-           // @var \Illuminate\Support\Collection $this
+            // @var \Illuminate\Support\Collection $this
             $result = [];
 
             foreach ($this->items as $key => $value) {
@@ -46,7 +44,7 @@ class CollectionMacros
     public function kebabKeys()
     {
         return function ($tidy = true) {
-           // @var \Illuminate\Support\Collection $this
+            // @var \Illuminate\Support\Collection $this
             $result = [];
 
             foreach ($this->items as $key => $value) {

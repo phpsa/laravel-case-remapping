@@ -7,7 +7,6 @@ use Phpsa\LaravelCaseRemapping\LaravelCaseRemappingServiceProvider;
 
 class CollectionMacroTest extends Orchestra
 {
-
     protected function getPackageProviders($app)
     {
         return [
@@ -18,49 +17,49 @@ class CollectionMacroTest extends Orchestra
     public function testKeysToSnakeCaseCollectionMacroWithoutTidy()
     {
         $input = [
-            'test'                  => 'hello',
-            'singleLine'            => 'hello',
-            'ArrayBased'            => [
+            'test' => 'hello',
+            'singleLine' => 'hello',
+            'ArrayBased' => [
                 'singleAgain' => 'single-arrow',
-                'thirdTier'   => [
-                    '1','2',5,6,7
+                'thirdTier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_Underscore' => 'true',
-            'already_correct'       => [
+            'already_correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'keyBasedOnAnotherDepth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'keyBasedOnAnotherDepth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $output = [
-            'test'                   => 'hello',
-            'single_line'            => 'hello',
-            'array_based'            => [
+            'test' => 'hello',
+            'single_line' => 'hello',
+            'array_based' => [
                 'single_again' => 'single-arrow',
-                'third_tier'   => [
-                    '1','2',5,6,7
+                'third_tier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with__underscore' => 'true',
-            'already_correct'        => [
+            'already_correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'key_based_on_another_depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'key_based_on_another_depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $res = collect($input)->snakeKeys(false)->toArray();
@@ -71,49 +70,49 @@ class CollectionMacroTest extends Orchestra
     public function testKeysToSnakeCaseCollectionMacro()
     {
         $input = [
-            'test'                  => 'hello',
-            'singleLine'            => 'hello',
-            'ArrayBased'            => [
+            'test' => 'hello',
+            'singleLine' => 'hello',
+            'ArrayBased' => [
                 'singleAgain' => 'single-arrow',
-                'thirdTier'   => [
-                    '1','2',5,6,7
+                'thirdTier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_Underscore' => 'true',
-            'already_correct'       => [
+            'already_correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'keyBasedOnAnotherDepth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'keyBasedOnAnotherDepth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $output = [
-            'test'                  => 'hello',
-            'single_line'           => 'hello',
-            'array_based'           => [
+            'test' => 'hello',
+            'single_line' => 'hello',
+            'array_based' => [
                 'single_again' => 'single-arrow',
-                'third_tier'   => [
-                    '1','2',5,6,7
+                'third_tier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_underscore' => 'true',
-            'already_correct'       => [
+            'already_correct' => [
                 'going_down' => [
                     'kebab_to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'key_based_on_another_depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'key_based_on_another_depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $res = collect($input)->snakeKeys(true)->toArray();
@@ -124,49 +123,49 @@ class CollectionMacroTest extends Orchestra
     public function testKeysToCamelCaseCollectionMacro()
     {
         $input = [
-            'test'                  => 'hello',
-            'singleLine'            => 'hello',
-            'ArrayBased'            => [
+            'test' => 'hello',
+            'singleLine' => 'hello',
+            'ArrayBased' => [
                 'singleAgain' => 'single-arrow',
-                'thirdTier'   => [
-                    '1','2',5,6,7
+                'thirdTier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_Underscore' => 'true',
-            'already__correct'      => [
+            'already__correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'keyBasedOnAnother_depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'keyBasedOnAnother_depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $output = [
-            'test'                => 'hello',
-            'singleLine'          => 'hello',
-            'arrayBased'          => [
+            'test' => 'hello',
+            'singleLine' => 'hello',
+            'arrayBased' => [
                 'singleAgain' => 'single-arrow',
-                'thirdTier'   => [
-                    '1','2',5,6,7
+                'thirdTier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issueWithUnderscore' => 'true',
-            'alreadyCorrect'      => [
+            'alreadyCorrect' => [
                 'goingDown' => [
                     'kebabToSnake' => [
                         'integerArray' => [
                             0,1,2,3,4,[
-                                'keyBasedOnAnotherDepth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'keyBasedOnAnotherDepth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $res = collect($input)->camelKeys()->toArray();
@@ -177,49 +176,49 @@ class CollectionMacroTest extends Orchestra
     public function testKeysToKebabCaseCollectionMacro()
     {
         $input = [
-            'test'                  => 'hello',
-            'singleLine'            => 'hello',
-            'ArrayBased'            => [
+            'test' => 'hello',
+            'singleLine' => 'hello',
+            'ArrayBased' => [
                 'singleAgain' => 'single-arrow',
-                'thirdTier'   => [
-                    '1','2',5,6,7
+                'thirdTier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_Underscore' => 'true',
-            'already__correct'      => [
+            'already__correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'keyBasedOnAnother_depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'keyBasedOnAnother_depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $output = [
-            'test'                  => 'hello',
-            'single-line'           => 'hello',
-            'array-based'           => [
+            'test' => 'hello',
+            'single-line' => 'hello',
+            'array-based' => [
                 'single-again' => 'single-arrow',
-                'third-tier'   => [
-                    '1','2',5,6,7
+                'third-tier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue-with-underscore' => 'true',
-            'already-correct'       => [
+            'already-correct' => [
                 'going-down' => [
                     'kebab-to-snake' => [
                         'integer-array' => [
                             0,1,2,3,4,[
-                                'key-based-on-another-depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'key-based-on-another-depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $res = collect($input)->kebabKeys()->toArray();
@@ -230,49 +229,49 @@ class CollectionMacroTest extends Orchestra
     public function testKeysToKebabCaseCollectionMacroWithoutTidy()
     {
         $input = [
-            'test'                  => 'hello',
-            'singleLine'            => 'hello',
-            'ArrayBased'            => [
+            'test' => 'hello',
+            'singleLine' => 'hello',
+            'ArrayBased' => [
                 'singleAgain' => 'single-arrow',
-                'thirdTier'   => [
-                    '1','2',5,6,7
+                'thirdTier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_Underscore' => 'true',
-            'already__correct'      => [
+            'already__correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'keyBasedOnAnother_depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'keyBasedOnAnother_depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $output = [
-            'test'                   => 'hello',
-            'single-line'            => 'hello',
-            'array-based'            => [
+            'test' => 'hello',
+            'single-line' => 'hello',
+            'array-based' => [
                 'single-again' => 'single-arrow',
-                'third-tier'   => [
-                    '1','2',5,6,7
+                'third-tier' => [
+                    '1','2',5,6,7,
                 ],
             ],
             'issue_with_-underscore' => 'true',
-            'already__correct'       => [
+            'already__correct' => [
                 'going_down' => [
                     'kebab-to_snake' => [
                         'integer_array' => [
                             0,1,2,3,4,[
-                                'key-based-on-another_depth' => 'yes'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'key-based-on-another_depth' => 'yes',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $res = collect($input)->kebabKeys(false)->toArray();

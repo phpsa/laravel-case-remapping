@@ -16,7 +16,6 @@ class SnakeCaseInputs
      */
     protected const RELEVANT_METHODS = ['POST', 'PATCH', 'PUT', 'DELETE', 'GET'];
 
-
     /**
      * Handle an incoming request.
      *

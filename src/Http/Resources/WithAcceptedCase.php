@@ -3,7 +3,6 @@
 namespace Phpsa\LaravelCaseRemapping\Http\Resources;
 
 use Illuminate\Support\Str;
-use Phpsa\LaravelApiController\Helpers;
 
 trait WithAcceptedCase
 {
