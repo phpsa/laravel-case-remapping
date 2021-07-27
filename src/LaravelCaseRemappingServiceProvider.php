@@ -2,9 +2,9 @@
 
 namespace Phpsa\LaravelCaseRemapping;
 
+use Phpsa\LaravelCaseRemapping\Commands\LaravelCaseRemappingCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Phpsa\LaravelCaseRemapping\Commands\LaravelCaseRemappingCommand;
 
 class LaravelCaseRemappingServiceProvider extends PackageServiceProvider
 {
