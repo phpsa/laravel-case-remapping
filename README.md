@@ -5,25 +5,9 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/phpsa/laravel-case-remapping/Check%20&%20fix%20styling?label=code%20style)](https://github.com/phpsa/laravel-case-remapping/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/phpsa/laravel-case-remapping.svg?style=flat-square)](https://packagist.org/packages/phpsa/laravel-case-remapping)
 
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this laravel-case-remapping
-2. Run "./configure-laravel-case-remapping.sh" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-case-remapping.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-case-remapping)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -33,31 +17,70 @@ You can install the package via composer:
 composer require phpsa/laravel-case-remapping
 ```
 
-You can publish and run the migrations with:
 
-```bash
-php artisan vendor:publish --provider="Phpsa\LaravelCaseRemapping\LaravelCaseRemappingServiceProvider" --tag="laravel-case-remapping-migrations"
-php artisan migrate
-```
+## Usage - Middlware for incomming requests
 
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Phpsa\LaravelCaseRemapping\LaravelCaseRemappingServiceProvider" --tag="laravel-case-remapping-config"
-```
-
-This is the contents of the published config file:
-
+Add as a middleware:
+`Phpsa\LaravelCaseRemapping\Http\Middleware\SnakeCaseInputs` to your route eg:
 ```php
-return [
-];
+Route::post('xxx',[...])->withMiddleware(\Phpsa\LaravelCaseRemapping\Http\Middleware\SnakeCaseInputs::class)
 ```
 
-## Usage
-
+in your controllers constructor:
 ```php
-$laravel-case-remapping = new Phpsa\LaravelCaseRemapping();
-echo $laravel-case-remapping->echoPhrase('Hello, Spatie!');
+public function __construct()
+{
+    $this->middleware(\Phpsa\LaravelCaseRemapping\Http\Middleware\SnakeCaseInputs::class);
+}
 ```
+
+Or globally via the `app/Http.Kernal.php` file
+```php
+protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        'api' => [
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Phpsa\LaravelCaseRemapping\Http\Middleware\SnakeCaseInputs::class
+        ],
+    ];
+```
+
+## Usage - Response wrapping for your Transformers / Response objects
+add the following trait to your resource:
+`\Phpsa\LaravelCaseRemapping\Http\Resources\WithAcceptedCase`
+
+then in your `toArray` method change to per example
+```
+public function toArray($request){
+    $data = parent::toArray($request);
+
+    ... // any other modifications
+
+    return $this->toAcceptedCase($request, $data);
+}
+```
+
+based on the header value for `X-Accept-Case-Type` passed to the request it will reaturn one of the following
+`camel`, `kebab`, `snake`
+
+
+## Usage - Collection methods
+This packages includes 3 collecion macros:
+
+* **snakeKeys** - will convert all array keys to snake case
+* **camelKeys** - will convert all array keys to camel case
+* **kebabKeys** - will convert all array keys to kebab case
+
 
 ## Testing
 
