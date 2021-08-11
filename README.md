@@ -66,7 +66,7 @@ public function toArray($request){
 
     ... // any other modifications
 
-    return $this->toAcceptedCase($request, $data);
+    return $this->toAcceptCase($request, $data);
 }
 ```
 
