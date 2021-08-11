@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/phpsa/laravel-case-remapping/compare/v1.0.0...v1.0.1) (2021-08-11)
+
+
+### Bug Fixes
+
+* :bug: Error in the case mapping ([6ede380](https://github.com/phpsa/laravel-case-remapping/commit/6ede38041b451f2f5c039260a1bfd44cdb41ff94)), closes [#3](https://github.com/phpsa/laravel-case-remapping/issues/3)
+
 # 1.0.0 (2021-07-27)
 
 
